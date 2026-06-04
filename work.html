@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dylan Makori — Founder, Builder, Producer. Nairobi." />
-  <meta property="og:title" content="Dylan Makori — currentsuspect.me" />
-  <meta property="og:description" content="Building Aestra DAW, running PlainSight Digital, making music as currentsuspect." />
-  <meta property="og:url" content="https://currentsuspect.me" />
-  <link rel="canonical" href="https://currentsuspect.me" />
+  <meta name="description" content="What Dylan Makori is building." />
+  <meta property="og:title" content="Work — currentsuspect.me" />
+  <meta property="og:url" content="https://currentsuspect.me/work" />
+  <link rel="canonical" href="https://currentsuspect.me/work" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%237F5AF0'/></svg>" />
-  <title>Dylan Makori — currentsuspect.me</title>
+  <title>Work — currentsuspect.me</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" as="style" />
   <link rel="stylesheet" href="style.css" />
   <script>
     (function(){if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')})();
@@ -27,7 +25,7 @@
     <div class="nav-group">
       <ul class="nav-links">
         <li><a href="/about">about</a></li>
-        <li><a href="/work">work</a></li>
+        <li><a href="/work" aria-current="page">work</a></li>
         <li><a href="/music">music</a></li>
         <li><a href="/writing">writing</a></li>
         <li><a href="/now">now</a></li>
@@ -40,24 +38,26 @@
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-prompt">~/home/dylan $</div>
-    <h1>
-      Dylan Makori.<br>
-      <span>Founder. Builder. Producer.</span><span class="cursor"></span>
-    </h1>
-    <p class="hero-desc">
-      Building tools, making music, and thinking out loud.
-      Based in Nairobi. Running Aestra and PlainSight Digital.
-      Going by currentsuspect everywhere else.
-    </p>
-    <div class="tags">
-      <span class="tag">C++</span>
-      <span class="tag">audio engineering</span>
-      <span class="tag">web agency</span>
-      <span class="tag">Nairobi</span>
-      <span class="tag">underground music</span>
-      <span class="tag">systems thinking</span>
+  <section class="section" id="work">
+    <div class="section-label">work</div>
+    <h2>What I'm building</h2>
+    <div class="cards">
+      <a class="card" href="https://aestra.app" target="_blank" rel="noopener">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="2 12 5 12"/><polyline points="7 6 7 18"/><polyline points="10 9 10 15"/><polyline points="13 4 13 20"/><polyline points="16 8 16 16"/><polyline points="19 10 19 14"/><polyline points="22 12 22 12"/></svg>
+        </div>
+        <div class="card-title">Aestra DAW</div>
+        <div class="card-sub">Free, source-available DAW for beatmakers on low-end hardware. Built from scratch in C++17.</div>
+        <div class="card-ext">aestra.app ↗</div>
+      </a>
+      <a class="card" href="https://plainsightdigital.dev" target="_blank" rel="noopener">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="card-title">PlainSight Digital</div>
+        <div class="card-sub">Web agency. High-converting sites for Kenyan businesses. I don't build websites — I build business tools.</div>
+        <div class="card-ext">plainsightdigital.dev ↗</div>
+      </a>
     </div>
   </section>
 

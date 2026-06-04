@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dylan Makori — Founder, Builder, Producer. Nairobi." />
-  <meta property="og:title" content="Dylan Makori — currentsuspect.me" />
-  <meta property="og:description" content="Building Aestra DAW, running PlainSight Digital, making music as currentsuspect." />
-  <meta property="og:url" content="https://currentsuspect.me" />
-  <link rel="canonical" href="https://currentsuspect.me" />
+  <meta name="description" content="currentsuspect — music by Dylan Makori." />
+  <meta property="og:title" content="Music — currentsuspect.me" />
+  <meta property="og:url" content="https://currentsuspect.me/music" />
+  <link rel="canonical" href="https://currentsuspect.me/music" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%237F5AF0'/></svg>" />
-  <title>Dylan Makori — currentsuspect.me</title>
+  <title>Music — currentsuspect.me</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" as="style" />
   <link rel="stylesheet" href="style.css" />
   <script>
     (function(){if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')})();
@@ -28,7 +26,7 @@
       <ul class="nav-links">
         <li><a href="/about">about</a></li>
         <li><a href="/work">work</a></li>
-        <li><a href="/music">music</a></li>
+        <li><a href="/music" aria-current="page">music</a></li>
         <li><a href="/writing">writing</a></li>
         <li><a href="/now">now</a></li>
         <li><a href="mailto:dylan@currentsuspect.me">contact</a></li>
@@ -40,24 +38,26 @@
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-prompt">~/home/dylan $</div>
-    <h1>
-      Dylan Makori.<br>
-      <span>Founder. Builder. Producer.</span><span class="cursor"></span>
-    </h1>
-    <p class="hero-desc">
-      Building tools, making music, and thinking out loud.
-      Based in Nairobi. Running Aestra and PlainSight Digital.
-      Going by currentsuspect everywhere else.
-    </p>
-    <div class="tags">
-      <span class="tag">C++</span>
-      <span class="tag">audio engineering</span>
-      <span class="tag">web agency</span>
-      <span class="tag">Nairobi</span>
-      <span class="tag">underground music</span>
-      <span class="tag">systems thinking</span>
+  <section class="section" id="music">
+    <div class="section-label">music</div>
+    <h2>currentsuspect</h2>
+    <div class="cards" style="margin-top: 1.25rem;">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="card-title">Echoes and Euphoria</div>
+        <div class="card-sub">Forthcoming album.</div>
+        <div class="card-ext">coming soon</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="card-title">Archive</div>
+        <div class="card-sub">Earlier work, experiments, beats.</div>
+        <div class="card-ext">soundcloud ↗</div>
+      </div>
     </div>
   </section>
 
