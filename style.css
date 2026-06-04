@@ -218,9 +218,9 @@ nav {
 .cursor {
   display: inline-block;
   width: 9px;
-  height: 18px;
+  height: 1em;
   background: var(--accent);
-  vertical-align: text-bottom;
+  vertical-align: middle;
   animation: blink 1.1s step-end infinite;
   margin-left: 2px;
 }
