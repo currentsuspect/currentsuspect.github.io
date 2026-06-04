@@ -220,9 +220,9 @@ nav {
   width: 9px;
   height: 1em;
   background: var(--accent);
-  vertical-align: middle;
   animation: blink 1.1s step-end infinite;
   margin-left: 2px;
+  transform: translateY(-0.15em);
 }
 
 @keyframes blink {
