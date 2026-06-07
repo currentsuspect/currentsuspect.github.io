@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays', ({ data }) => !data.draft);
+  const sortedAsc = [...essays].sort(
+    (a, b) => a.data.publishDate.getTime() - b.data.publishDate.getTime()
+  );
+  return sortedAsc.map((essay, i) => ({
+    params: { slug: essay.id },
+    props: {
+      essay,
+      number: i + 1,
+      total: sortedAsc.length,
+    },
+  }));
+}
+
+type Props = {
+  essay: CollectionEntry<'essays'>;
+  number: number;
+  total: number;
+};
+
+const { essay, number } = Astro.props;
+const { Content } = await render(essay);
+
+function formatDate(d: Date): string {
+  const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  return `${day} ${months[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+function readingTime(body: string | undefined): number {
+  if (!body) return 1;
+  let text = body;
+  text = text.replace(/^---[\s\S]*?---\n?/, '');
+  text = text.replace(/^#{1,6}\s+/gm, '');
+  text = text.replace(/^---+$/gm, ' ');
+  text = text.replace(/<[^>]+>/g, ' ');
+  text = text.replace(/[`*_~]/g, '');
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 225));
+}
+
+const publishDate = essay.data.publishDate;
+const updatedDate = essay.data.updatedDate;
+const body = essay.body ?? '';
+---
+
+<BaseLayout
+  title={essay.data.title}
+  description={essay.data.description}
+  ogType="article"
+  publishedTime={publishDate.toISOString()}
+>
+  <article class="essay">
+    <a class="essay-back" href="/writing">back to writing</a>
+
+    <header class="essay-header">
+      <div class="essay-meta">
+        essay {String(number).padStart(2, '0')}
+        <span>·</span>
+        {formatDate(publishDate)}
+        <span>·</span>
+        {readingTime(body)} min read
+      </div>
+      <h1 class="essay-title">{essay.data.title}</h1>
+    </header>
+
+    <div class="essay-body">
+      <Content />
+    </div>
+
+    <footer class="essay-closing">
+      <span>Posted {formatDate(publishDate)}{updatedDate && ` · updated ${formatDate(updatedDate)}`}</span>
+      <span><a href="/writing">← all writing</a></span>
+    </footer>
+  </article>
+</BaseLayout>

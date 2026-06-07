@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const items = [
+  { text: '<strong>Aestra</strong> — shipping the EQ plugin. Building toward December 2026 beta.', dim: false },
+  { text: '<strong>PlainSight</strong> — working for 3 clients.', dim: false },
+  { text: '<strong>Music</strong> — working on Echoes and Euphoria.', dim: false },
+  { text: 'Last updated: June 2026', dim: true },
+];
+---
+
+<BaseLayout
+  title="Now — currentsuspect.me"
+  description="What Dylan Makori is doing right now."
+>
+  <section class="section" id="now">
+    <div class="section-label">now</div>
+    <h2>What I'm doing right now</h2>
+    <div class="now-list">
+      {items.map(item => (
+        <div class="now-item">
+          <div class={`now-dot${item.dim ? ' dim' : ''}`}></div>
+          <div class={`now-text${item.dim ? ' dim' : ''}`} set:html={item.text}></div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .now-text.dim { color: var(--text-dim); }
+</style>

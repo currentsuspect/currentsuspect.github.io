@@ -1,0 +1,38 @@
+---
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+
+const links = [
+  { href: '/about', label: 'about' },
+  { href: '/work', label: 'work' },
+  { href: '/music', label: 'music' },
+  { href: '/writing', label: 'writing' },
+  { href: '/now', label: 'now' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href + '/');
+}
+---
+
+<nav>
+  <a href="/" class="nav-logo">currentsuspect.me</a>
+  <div class="nav-group">
+    <ul class="nav-links">
+      {links.map(link => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >{link.label}</a>
+        </li>
+      ))}
+      <li><a href="mailto:dylan@currentsuspect.me">contact</a></li>
+    </ul>
+    <slot name="theme-toggle" />
+  </div>
+</nav>
