@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const essays = (await getCollection('essays', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+function formatDate(d: Date): string {
+  const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  return `${day} ${months[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+function readingTime(body: string | undefined): number {
+  if (!body) return 1;
+  let text = body;
+  text = text.replace(/^---[\s\S]*?---\n?/, '');
+  text = text.replace(/^#{1,6}\s+/gm, '');
+  text = text.replace(/^---+$/gm, ' ');
+  text = text.replace(/<[^>]+>/g, ' ');
+  text = text.replace(/[`*_~]/g, '');
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 225));
+}
+---
+
+<BaseLayout
+  title="Writing — currentsuspect.me"
+  description="Essays and thoughts by Dylan Makori."
+>
+  <section class="section" id="writing">
+    <div class="section-label">writing</div>
+    <h2>Essays & thoughts</h2>
+    {essays.length === 0 ? (
+      <p class="writing-muted">Nothing yet — first essay coming soon.</p>
+    ) : (
+      <div class="essay-list">
+        {essays.map((essay, i) => (
+          <a class="essay-list-item" href={`/writing/${essay.id}`}>
+            <div class="essay-list-meta">
+              {formatDate(essay.data.publishDate)}
+              <span>·</span>
+              {String(i + 1).padStart(2, '0')}
+              <span>·</span>
+              {readingTime(essay.body ?? '')} min read
+            </div>
+            <div class="essay-list-title">{essay.data.title}</div>
+            <p class="essay-list-excerpt">{essay.data.description}</p>
+          </a>
+        ))}
+      </div>
+      <p class="writing-muted">More coming soon.</p>
+    )}
+  </section>
+</BaseLayout>
